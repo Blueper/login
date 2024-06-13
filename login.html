@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    <div class="login-container">
+        <h1>Login</h1>
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+        <form method="POST" action="{{ url_for('login') }}">
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div>
+                <button type="submit">Login</button>
+            </div>
+        </form>
+        <p>Don't have an account? <a href="{{ url_for('register') }}">Register here</a>.</p>
+        <div class="social-login">
+            <p>Or login with:</p>
+            <div class="social-buttons">
+                <a href="{{ url_for('google_login') }}" class="btn btn-google">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google Logo" class="google-logo"> Google
+                </a>
+                <a href="{{ url_for('facebook_login') }}" class="btn btn-facebook">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="Facebook Logo"> Facebook
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
